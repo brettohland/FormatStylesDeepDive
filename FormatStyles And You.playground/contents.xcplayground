@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
     <pages>
+        <page name='MeasurementFormatStyle'/>
         <page name='Custom FormatStyle'/>
-        <page name='Date Formatters'/>
-        <page name='Relative Dates'/>
+        <page name='Date.FormatStyle'/>
+        <page name='Date.RelativeFormatStyle'/>
         <page name='Sensible Defaults'/>
+        <page name='SwiftUI'/>
+        <page name='Date.ComponentFormatStyle'/>
+        <page name='Date.IntervalFormatStyle'/>
+        <page name='Date.ISO8601FormatStyle'/>
+        <page name='Date.VerbatimFormatStyle'/>
+        <page name='Date.FormatStyle.dateTime'/>
+        <page name='ByteCountFormatStyle'/>
     </pages>
 </playground>

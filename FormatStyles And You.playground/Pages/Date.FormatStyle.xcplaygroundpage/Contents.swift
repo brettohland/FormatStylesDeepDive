@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import Foundation
 
 // MARK: - Setup
 
@@ -46,32 +47,6 @@ twosday.formatted(date: .numeric, time: .complete) // "2/22/2022, 2:22:22 AM MST
 twosday.formatted(date: .numeric, time: .shortened) // "2/22/2022, 2:22 AM"
 twosday.formatted(date: .numeric, time: .standard) // "2/22/2022, 2:22:22 AM"
 
-// MARK: - Components
-
-twosday.formatted(.dateTime.day()) // "22"
-twosday.formatted(.dateTime.dayOfYear()) // "53"
-twosday.formatted(.dateTime.era()) // "AD"
-twosday.formatted(.dateTime.hour()) // "2 AM"
-twosday.formatted(.dateTime.minute()) // "22"
-twosday.formatted(.dateTime.month()) // "Feb"
-twosday.formatted(.dateTime.quarter()) // "Q1"
-twosday.formatted(.dateTime.second()) // "22"
-twosday.formatted(.dateTime.timeZone()) // "MST"
-twosday.formatted(.dateTime.week()) // "9"
-twosday.formatted(.dateTime.weekday()) // "Tue"
-twosday.formatted(.dateTime.year()) // "2022"
-
-// MARK: - Compositing
-
-twosday.formatted(.dateTime.year().month().day().hour().minute().second()) // "Feb 22, 2022, 2:22:22 AM"
-twosday.formatted(.dateTime.second().minute().hour().day().month().year()) // "Feb 22, 2022, 2:22:22 AM"
-
-// MARK: - Formatting Individual Components
-
-twosday.formatted(.dateTime.day(.twoDigits)) // "22"
-twosday.formatted(.dateTime.day(.ordinalOfDayInMonth)) // "4"
-twosday.formatted(.dateTime.day(.defaultDigits)) // "22"
-
 // MARK: - Custom Date.FormatStyle
 
 let frenchHebrew = Date.FormatStyle(
@@ -111,26 +86,3 @@ extension FormatStyle where Self == FrenchHebrewStyle {
 }
 
 twosday.formatted(.frenchHebrew) // "Mardi 22 février 2022 ap. J.-C. 9:22:22 UTC"
-
-// MARK: - Custom FormatStyle
-
-/// Returns the date in the most useless way ever
-struct ReversedDateFormat: FormatStyle {
-    typealias FormatInput = Date
-    typealias FormatOutput = String
-
-    func format(_ value: Date) -> String {
-        "\(value.formatted(.dateTime.second())):" +
-            "\(value.formatted(.dateTime.minute())):" +
-            "\(value.formatted(.dateTime.hour())) " +
-            "\(value.formatted(.dateTime.day())) " +
-            "\(value.formatted(.dateTime.month())) " +
-            "\(value.formatted(.dateTime.year())) "
-    }
-}
-
-extension FormatStyle where Self == ReversedDateFormat {
-    static var reversedDate: ReversedDateFormat { .init() }
-}
-
-twosday.formatted(.reversedDate) // "22:22:2 AM 22 Feb 2022"

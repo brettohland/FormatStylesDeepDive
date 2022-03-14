@@ -2,7 +2,6 @@
 
 import Foundation
 
-
 struct ToYen: FormatStyle {
     typealias FormatInput = Int
     typealias FormatOutput = String
@@ -12,12 +11,10 @@ struct ToYen: FormatStyle {
     }
 }
 
-// There has to be a better way
-30.formatted(ToYen())
+30.formatted(ToYen()) // "¥3,000"
 
-//extension FormatStyle where Self == ToYen {
-//    static var toYen: ToYen { .init() }
-//}
-//
-//30.formatted(.toYen)
-//
+extension FormatStyle where Self == ToYen {
+    static var toYen: ToYen { .init() }
+}
+
+30.formatted(.toYen) // "¥3,000"
