@@ -99,4 +99,11 @@ Decimal(7).formatted(.currency(code: "GBP").sign(strategy: .always()))          
 Decimal(7).formatted(.currency(code: "GBP").sign(strategy: .always(showZero: true)))            // "+£7.00"
 Decimal(7).formatted(.currency(code: "GBP").sign(strategy: .always(showZero: false)))           // "+£7.00"
 
+Decimal(10).formatted(
+    .currency(code: "GBP")
+    .scale(200.0)
+    .sign(strategy: .always())
+    .presentation(.fullName)
+) // "+2,000.00 British pounds"
+
 //: [Next](@next)

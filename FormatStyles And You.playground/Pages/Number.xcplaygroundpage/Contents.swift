@@ -103,4 +103,9 @@ Float(10).formatted(.number.scale(1.0))  // "10"
 Float(10).formatted(.number.scale(1.5))  // "15"
 Float(10).formatted(.number.scale(2.0))  // "20"
 Float(10).formatted(.number.scale(-2.0)) // "-20"
+
+// MARK: - Compositing
+
+Float(10).formatted(.number.scale(200.0).notation(.compactName).grouping(.automatic)) // "2K"
+
 //: [Next](@next)

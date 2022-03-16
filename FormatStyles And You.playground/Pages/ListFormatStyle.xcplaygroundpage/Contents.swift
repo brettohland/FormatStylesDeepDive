@@ -6,7 +6,7 @@ let letters = ["a", "b", "c", "d"]
 
 // MARK: - ListFormatStyle
 
-letters.formatted()
+letters.formatted() // "a, b, c, and d"
 
 letters.formatted(.list(type: .and)) // "a, b, c, and d"
 letters.formatted(.list(type: .or))  // "a, b, c, or d"
