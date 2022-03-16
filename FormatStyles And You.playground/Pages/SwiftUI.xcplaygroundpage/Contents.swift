@@ -28,4 +28,5 @@ struct ContentView: View {
     }
 }
 
-PlaygroundPage.current.setLiveView(ContentView()) //: [Next](@next)
+PlaygroundPage.current.setLiveView(ContentView())
+//: [Next](@next)
