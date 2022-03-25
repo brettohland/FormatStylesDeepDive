@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 // MARK: - Date.ComponentsFormatStyle
@@ -97,4 +95,4 @@ extension FormatStyle where Self == InFrench {
 
 secondRange.formatted(.inFrench) // "21 ans, 1 mois, 3 semaines, 9 heures et 1 342 secondes"
 
-//: [Next](@next)
+

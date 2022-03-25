@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 // MARK: - Measurement.FormatStyle
@@ -51,4 +49,10 @@ extension FormatStyle where Self == InFrench {
 
 gForce.formatted(.inFrench) // "1 fois l’accélération de pesanteur terrestre"
 
-//: [Next](@next)
+// MARK: - Output Attributed Strings
+
+gForce.formatted(.measurement(width: .wide).attributed)
+gForce.formatted(.measurement(width: .narrow).attributed)
+gForce.formatted(.measurement(width: .abbreviated).attributed)
+
+

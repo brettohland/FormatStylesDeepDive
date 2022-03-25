@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 // MARK: - Rounded
@@ -105,4 +103,4 @@ Float(10).formatted(.percent.scale(-2.0))   // "-20%"
 
 Float(10).formatted(.percent.scale(200.0).notation(.compactName).grouping(.automatic)) // "2K%"
 
-//: [Next](@next)
+

@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 // Dates
@@ -28,4 +26,4 @@ PersonNameComponents(givenName: "Johnny", familyName: "Appleseed").formatted() /
 let referenceDay = Date(timeIntervalSinceReferenceDate: 0)
 (referenceDay ..< referenceDay.addingTimeInterval(200)).formatted() // "12/31/00, 5:00 – 5:03 PM"
 
-//: [Next](@next)
+

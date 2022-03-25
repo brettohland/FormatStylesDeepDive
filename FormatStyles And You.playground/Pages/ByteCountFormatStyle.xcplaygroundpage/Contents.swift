@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 let terabyte: Int64 = 1_000_000_000_000
@@ -41,4 +39,8 @@ let inFrench = ByteCountFormatStyle(
 inFrench.format(terabyte) // "931,32 Go (1 000 000 000 000 octets)"
 terabyte.formatted(inFrench) // "931,32 Go (1 000 000 000 000 octets)"
 
-//: [Next](@next)
+// MARK: - AttributedString Output
+
+terabyte.formatted(.byteCount(style: .binary).attributed)
+
+

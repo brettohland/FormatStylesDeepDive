@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 // MARK: - Grouping
@@ -106,4 +104,4 @@ Decimal(10).formatted(
     .presentation(.fullName)
 ) // "+2,000.00 British pounds"
 
-//: [Next](@next)
+

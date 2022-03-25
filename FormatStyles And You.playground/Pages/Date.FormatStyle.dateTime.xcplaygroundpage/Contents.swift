@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 let twosdayDateComponents = DateComponents(
@@ -13,13 +11,6 @@ let twosdayDateComponents = DateComponents(
 )
 let twosday = Calendar(identifier: .gregorian).date(from: twosdayDateComponents)!
 
-let verbatim = Date.VerbatimFormatStyle(
-    format: "\(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .oneBased)):\(minute: .twoDigits)",
-    timeZone: TimeZone.current,
-    calendar: .current
-)
-verbatim.format(twosday) // "02:22"
-
 // MARK: - Date.FormatStyle.dateTime styles
 
 twosday.formatted(.dateTime.day()) // "22"
@@ -32,7 +23,7 @@ twosday.formatted(.dateTime.quarter()) // "Q1"
 twosday.formatted(.dateTime.second()) // "22"
 twosday.formatted(.dateTime.timeZone()) // "MST"
 twosday.formatted(.dateTime.week()) // "9"
-twosday.formatted(.dateTime.weekday()) // "Tue"
+twosday.formatted(.dateTime.weekday(.abbreviated)) // "Tue"
 twosday.formatted(.dateTime.year()) // "2022"
 
 // MARK: - Compositing
@@ -51,4 +42,7 @@ twosday.formatted(.dateTime.day(.defaultDigits)) // "22"
 let franceLocale = Locale(identifier: "fr_FR")
 twosday.formatted(.dateTime.year().month().day().hour().minute().second().locale(franceLocale)) // "22 févr. 2022 à 02:22:22"
 
-//: [Next](@next)
+// MARK: - Attributed String Output
+twosday.formatted(.dateTime.hour().minute().attributed)
+
+

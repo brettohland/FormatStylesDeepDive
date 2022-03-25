@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 let guest = PersonNameComponents(
@@ -30,4 +28,4 @@ let inFrance = PersonNameComponents.FormatStyle(style: .long, locale: Locale(ide
 inFrance.format(guest)
 guest.formatted(inFrance)
 
-//: [Next](@next)
+

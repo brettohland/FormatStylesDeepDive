@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 // MARK: - Date.IntervalFormatStyle
@@ -49,4 +47,4 @@ extension FormatStyle where Self == NarrowIntervalStyle {
 
 range.formatted(.narrowInterval)
 
-//: [Next](@next)
+

@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 let letters = ["a", "b", "c", "d"]
@@ -55,4 +53,4 @@ importantDates.formatted(.list(memberStyle: yearOnlyFormat, type: .or, width: .s
 let yearStyle = ListFormatStyle<Date.FormatStyle, Array<Date>>.init(memberStyle: .dateTime.year())
 importantDates.formatted(yearStyle)
 
-//: [Next](@next)
+

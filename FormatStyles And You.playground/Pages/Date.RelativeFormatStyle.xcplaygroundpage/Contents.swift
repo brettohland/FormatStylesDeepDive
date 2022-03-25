@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 let thePast = Calendar(identifier: .gregorian).date(byAdding: .day, value: -14, to: Date())!
@@ -63,4 +61,4 @@ extension FormatStyle where Self == InFrench {
 }
 
 thePast.formatted(.inFrench) // "Il y a deux semaines"
-//: [Next](@next)
+

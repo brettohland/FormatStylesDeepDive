@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 // MARK: - Date.VerbatimFormatStyle
@@ -21,5 +19,6 @@ let verbatim = Date.VerbatimFormatStyle(
     calendar: .current
 )
 verbatim.format(twosday) // "02:22"
+twosday.formatted(verbatim.attributed)
 
-//: [Next](@next)
+
