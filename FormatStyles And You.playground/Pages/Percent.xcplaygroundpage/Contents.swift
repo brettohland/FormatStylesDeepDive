@@ -64,12 +64,7 @@ Float(10).formatted(.percent.decimalSeparator(strategy: .always))       // "1,00
 Float(1_000).formatted(.percent.grouping(.automatic))   // "100,000%"
 Float(1_000).formatted(.percent.grouping(.never))       // "100000%"
 
-// MARK: - Grouping with Locale
-
-Float(1_000).formatted(.percent.grouping(.automatic).locale(Locale(identifier: "fr_FR")))   // "100 000 %"
-Float(1_000).formatted(.percent.grouping(.never).locale(Locale(identifier: "fr_FR")))       // "100000 %"
-
-// MARK: - Significant Digits
+// MARK: - Precision
 
 Decimal(10.1).formatted(.percent.precision(.significantDigits(1))) // "1,000%"
 Decimal(10.1).formatted(.percent.precision(.significantDigits(2))) // "1,000%"
@@ -82,17 +77,32 @@ Decimal(10).formatted(.percent.precision(.significantDigits(1 ... 3)))      // "
 Decimal(10.1).formatted(.percent.precision(.significantDigits(1 ... 3)))    // "1,010%"
 Decimal(10.01).formatted(.percent.precision(.significantDigits(1 ... 3)))   // "1,000%"
 
+Decimal(0.0001).formatted(.percent.precision(.fractionLength(1))) // 0.0%
+Decimal(0.0001).formatted(.percent.precision(.fractionLength(2))) // 0.001%
+Decimal(0.0001).formatted(.percent.precision(.fractionLength(3))) // 0.010%
+
+Decimal(0.0001).formatted(.percent.precision(.fractionLength(0...1)))    // 0%
+Decimal(0.0001).formatted(.percent.precision(.fractionLength(0...2)))    // 0.01%
+Decimal(0.0001).formatted(.percent.precision(.fractionLength(0...3)))    // 0.01%
+Decimal(0.0001).formatted(.percent.precision(.fractionLength(0...4)))    // 0.01%
+
+Decimal(10.111).formatted(.percent.precision(.integerLength(1))) // 1.1%
+Decimal(10.111).formatted(.percent.precision(.integerLength(2))) // 11.1%
+
+Decimal(10.111).formatted(.percent.precision(.integerLength(0...1))) // 1.1%
+Decimal(10.111).formatted(.percent.precision(.integerLength(0...2))) // 11.1%
+Decimal(10.111).formatted(.percent.precision(.integerLength(0...3))) // 11.1%
+
+Decimal(10.111).formatted(.percent.precision(.integerAndFractionLength(integer: 1, fraction: 1))) // 1.1%
+Decimal(10.111).formatted(.percent.precision(.integerAndFractionLength(integer: 2, fraction: 1))) // 11.1%
+Decimal(10.111).formatted(.percent.precision(.integerAndFractionLength(integer: 2, fraction: 2))) // 11.10%
+Decimal(10.111).formatted(.percent.precision(.integerAndFractionLength(integer: 2, fraction: 3))) // 11.100%
+
 // MARK: - Notation
 
 Float(1_000).formatted(.percent.notation(.automatic))   // "100,000%"
 Float(1_000).formatted(.percent.notation(.compactName)) // "100K%"
 Float(1_000).formatted(.percent.notation(.scientific))  // "1E5%"
-
-// MARK: - Notation with Locale
-
-Float(1_000).formatted(.percent.notation(.automatic).locale(Locale(identifier: "fr_FR")))   // "100 000 %"
-Float(1_000).formatted(.percent.notation(.compactName).locale(Locale(identifier: "fr_FR"))) // "100 k %"
-Float(1_000).formatted(.percent.notation(.scientific).locale(Locale(identifier: "fr_FR")))  // "1E5 %"
 
 // MARK: - Scale
 
@@ -101,6 +111,19 @@ Float(10).formatted(.percent.scale(1.5))    // "15%"
 Float(10).formatted(.percent.scale(2.0))    // "20%"
 Float(10).formatted(.percent.scale(-2.0))   // "-20%"
 
+// MARK: Compositing
+
 Float(10).formatted(.percent.scale(200.0).notation(.compactName).grouping(.automatic)) // "2K%"
 
+// MARK: - Locale
 
+Float(1_000).formatted(.percent.grouping(.automatic).locale(Locale(identifier: "fr_FR")))   // "100 000 %"
+Float(1_000).formatted(.percent.grouping(.never).locale(Locale(identifier: "fr_FR")))       // "100000 %"
+
+Float(1_000).formatted(.percent.notation(.automatic).locale(Locale(identifier: "fr_FR")))   // "100 000 %"
+Float(1_000).formatted(.percent.notation(.compactName).locale(Locale(identifier: "fr_FR"))) // "100 k %"
+Float(1_000).formatted(.percent.notation(.scientific).locale(Locale(identifier: "fr_FR")))  // "1E5 %"
+
+// MARK: - Attributed String Output
+
+Float(10).formatted(.percent.scale(200.0).notation(.compactName).grouping(.automatic).attributed)

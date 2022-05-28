@@ -65,35 +65,46 @@ Float(10).formatted(.number.decimalSeparator(strategy: .always))    // "10."
 Float(1000).formatted(.number.grouping(.automatic)) // "1,000"
 Float(1000).formatted(.number.grouping(.never))     // "1000"
 
-// MARK: - Grouping with Locale
-
-Float(1000).formatted(.number.grouping(.automatic).locale(Locale(identifier: "fr_FR"))) // "1 000"
-Float(1000).formatted(.number.grouping(.never).locale(Locale(identifier: "fr_FR")))     // "1000"
-
-// MARK: - Significant Digits
+// MARK: - Precision
 
 Decimal(10.1).formatted(.number.precision(.significantDigits(1))) // "10"
 Decimal(10.1).formatted(.number.precision(.significantDigits(2))) // "10"
 Decimal(10.1).formatted(.number.precision(.significantDigits(3))) // "10.1"
 Decimal(10.1).formatted(.number.precision(.significantDigits(4))) // "10.10"
 Decimal(10.1).formatted(.number.precision(.significantDigits(5))) // "10.100"
+Decimal(1000000.1).formatted(.number.precision(.significantDigits(5))) // "10.100"
 
 Decimal(1).formatted(.number.precision(.significantDigits(1 ... 3)))     // "1"
 Decimal(10).formatted(.number.precision(.significantDigits(1 ... 3)))    // "10"
 Decimal(10.1).formatted(.number.precision(.significantDigits(1 ... 3)))  // "10.1"
 Decimal(10.01).formatted(.number.precision(.significantDigits(1 ... 3))) // "10"
 
+Decimal(10.01).formatted(.number.precision(.fractionLength(1))) // 10.0
+Decimal(10.01).formatted(.number.precision(.fractionLength(2))) // 10.01
+Decimal(10.01).formatted(.number.precision(.fractionLength(3))) // 10.010
+
+Decimal(10).formatted(.number.precision(.fractionLength(0...2)))        // 10
+Decimal(10.1).formatted(.number.precision(.fractionLength(0...2)))      // 10.1
+Decimal(10.11).formatted(.number.precision(.fractionLength(0...2)))     // 10.11
+Decimal(10.111).formatted(.number.precision(.fractionLength(0...2)))    // 10.11
+
+Decimal(10.111).formatted(.number.precision(.integerLength(1))) // 0.111
+Decimal(10.111).formatted(.number.precision(.integerLength(2))) // 10.111
+
+Decimal(10.111).formatted(.number.precision(.integerLength(0...1))) // .111
+Decimal(10.111).formatted(.number.precision(.integerLength(0...2))) // 10.111
+Decimal(10.111).formatted(.number.precision(.integerLength(0...3))) // 10.111
+
+Decimal(10.111).formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 1))) // 0.1
+Decimal(10.111).formatted(.number.precision(.integerAndFractionLength(integer: 2, fraction: 1))) // 10.1
+Decimal(10.111).formatted(.number.precision(.integerAndFractionLength(integer: 2, fraction: 2))) // 10.11
+Decimal(10.111).formatted(.number.precision(.integerAndFractionLength(integer: 2, fraction: 3))) // 10.111
+
 // MARK: - Notation
 
 Float(1_000).formatted(.number.notation(.automatic))   // "1,000"
 Float(1_000).formatted(.number.notation(.compactName)) // "1K"
 Float(1_000).formatted(.number.notation(.scientific))  // "1E3"
-
-// MARK: - Notation with Locale
-
-Float(1_000).formatted(.number.notation(.automatic).locale(Locale(identifier: "fr_FR")))   // "1 000"
-Float(1_000).formatted(.number.notation(.compactName).locale(Locale(identifier: "fr_FR"))) // "1 k"
-Float(1_000).formatted(.number.notation(.scientific).locale(Locale(identifier: "fr_FR")))  // "1E3"
 
 // MARK: - Scale
 
@@ -106,4 +117,15 @@ Float(10).formatted(.number.scale(-2.0)) // "-20"
 
 Float(10).formatted(.number.scale(200.0).notation(.compactName).grouping(.automatic)) // "2K"
 
+// MARK: - Locale
 
+Float(1_000).formatted(.number.notation(.automatic).locale(Locale(identifier: "fr_FR")))   // "1 000"
+Float(1_000).formatted(.number.notation(.compactName).locale(Locale(identifier: "fr_FR"))) // "1 k"
+Float(1_000).formatted(.number.notation(.scientific).locale(Locale(identifier: "fr_FR")))  // "1E3"
+
+Float(1000).formatted(.number.grouping(.automatic).locale(Locale(identifier: "fr_FR"))) // "1 000"
+Float(1000).formatted(.number.grouping(.never).locale(Locale(identifier: "fr_FR")))     // "1000"
+
+// MARK: - Attributed String Output
+
+Float(10).formatted(.number.scale(200.0).notation(.compactName).grouping(.automatic).attributed)
