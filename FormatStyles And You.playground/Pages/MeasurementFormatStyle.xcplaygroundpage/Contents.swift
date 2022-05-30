@@ -3,16 +3,15 @@ import Foundation
 // MARK: - Measurement.FormatStyle
 
 let gForce = Measurement(value: 1.0, unit: UnitAcceleration.gravity)
-let mpsec = Measurement(value: 1.0, unit: UnitAcceleration.metersPerSecondSquared)
 
-gForce.formatted(.measurement(width: .wide))        // "1 g-force"
-gForce.formatted(.measurement(width: .narrow))      // "1G"
+gForce.formatted(.measurement(width: .wide)) // "1 g-force"
+gForce.formatted(.measurement(width: .narrow)) // "1G"
 gForce.formatted(.measurement(width: .abbreviated)) // "1 G"
 
 let franceLocale = Locale(identifier: "fr_FR")
 
-gForce.formatted(.measurement(width: .wide).locale(franceLocale))        // "1 fois l’accélération de pesanteur terrestre"
-gForce.formatted(.measurement(width: .narrow).locale(franceLocale))      // "1G"
+gForce.formatted(.measurement(width: .wide).locale(franceLocale)) // "1 fois l’accélération de pesanteur terrestre"
+gForce.formatted(.measurement(width: .narrow).locale(franceLocale)) // "1G"
 gForce.formatted(.measurement(width: .abbreviated).locale(franceLocale)) // "1 force g"
 
 // MARK: - Customizing
@@ -23,8 +22,8 @@ let inFrench = Measurement<UnitAcceleration>.FormatStyle(
     usage: .general
 )
 
-inFrench.format(gForce)     // "1 fois l’accélération de pesanteur terrestre"
-gForce.formatted(inFrench)  // "1 fois l’accélération de pesanteur terrestre"
+inFrench.format(gForce) // "1 fois l’accélération de pesanteur terrestre"
+gForce.formatted(inFrench) // "1 fois l’accélération de pesanteur terrestre"
 
 // MARK: - Custom Measurement FormatStyle
 
@@ -54,5 +53,3 @@ gForce.formatted(.inFrench) // "1 fois l’accélération de pesanteur terrestr
 gForce.formatted(.measurement(width: .wide).attributed)
 gForce.formatted(.measurement(width: .narrow).attributed)
 gForce.formatted(.measurement(width: .abbreviated).attributed)
-
-

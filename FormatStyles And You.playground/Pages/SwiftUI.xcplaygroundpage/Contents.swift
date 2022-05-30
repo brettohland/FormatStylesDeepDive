@@ -27,4 +27,3 @@ struct ContentView: View {
 }
 
 PlaygroundPage.current.setLiveView(ContentView())
-

@@ -2,14 +2,6 @@ import Foundation
 
 let thePast = Calendar(identifier: .gregorian).date(byAdding: .day, value: -14, to: Date())!
 
-// MARK: - Without Units
-
-thePast.formatted(.relative(presentation: .numeric)) // "2 weeks ago"
-thePast.formatted(.relative(presentation: .numeric)) // "2 weeks ago"
-thePast.formatted(.relative(presentation: .named)) // "2 weeks ago"
-
-// MARK: - Including Units
-
 thePast.formatted(.relative(presentation: .numeric, unitsStyle: .abbreviated)) // "2 wk. ago"
 thePast.formatted(.relative(presentation: .numeric, unitsStyle: .narrow)) // "2 wk. ago"
 thePast.formatted(.relative(presentation: .numeric, unitsStyle: .spellOut)) // "two weeks ago"
@@ -61,4 +53,3 @@ extension FormatStyle where Self == InFrench {
 }
 
 thePast.formatted(.inFrench) // "Il y a deux semaines"
-

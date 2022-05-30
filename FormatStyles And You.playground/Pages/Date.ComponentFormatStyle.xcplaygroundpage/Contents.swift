@@ -4,11 +4,11 @@ import Foundation
 
 let testRange = Date(timeIntervalSince1970: 0) ..< Date(timeIntervalSinceReferenceDate: 0)
 
-testRange.formatted(.components(style: .abbreviated, fields: [.day]))           // "11,323 days"
-testRange.formatted(.components(style: .narrow, fields: [.day]))                // "11,323days"
-testRange.formatted(.components(style: .wide, fields: [.day]))                  // "11,323 days"
-testRange.formatted(.components(style: .spellOut, fields: [.day]))              // "eleven thousand three hundred twenty-three days"
-testRange.formatted(.components(style: .condensedAbbreviated, fields: [.day]))  // "11,323d"
+testRange.formatted(.components(style: .abbreviated, fields: [.day])) // "11,323 days"
+testRange.formatted(.components(style: .narrow, fields: [.day])) // "11,323days"
+testRange.formatted(.components(style: .wide, fields: [.day])) // "11,323 days"
+testRange.formatted(.components(style: .spellOut, fields: [.day])) // "eleven thousand three hundred twenty-three days"
+testRange.formatted(.components(style: .condensedAbbreviated, fields: [.day])) // "11,323d"
 
 testRange.formatted(.components(style: .condensedAbbreviated, fields: [.day, .month, .year, .hour, .second, .week])) // "31y"
 
@@ -24,7 +24,7 @@ let twosdayDateComponents = DateComponents(
 
 let appleReferenceDay = Date(timeIntervalSinceReferenceDate: 0)
 let twosday = Calendar(identifier: .gregorian).date(from: twosdayDateComponents)!
-let secondRange = appleReferenceDay..<twosday
+let secondRange = appleReferenceDay ..< twosday
 
 // "21 yrs, 1 mth, 3 wks, 9 hr, 1,342 sec"
 secondRange.formatted(.components(style: .abbreviated, fields: [.day, .month, .year, .hour, .second, .week]))
@@ -63,7 +63,7 @@ let componentsFormat = Date.ComponentsFormatStyle(
     ]
 )
 
-componentsFormat.format(secondRange)    // "21 ans, 1 mois, 3 semaines, 9 heures et 1 342 secondes"
+componentsFormat.format(secondRange) // "21 ans, 1 mois, 3 semaines, 9 heures et 1 342 secondes"
 secondRange.formatted(componentsFormat) // "21 ans, 1 mois, 3 semaines, 9 heures et 1 342 secondes"
 
 struct InFrench: FormatStyle {
@@ -94,5 +94,3 @@ extension FormatStyle where Self == InFrench {
 }
 
 secondRange.formatted(.inFrench) // "21 ans, 1 mois, 3 semaines, 9 heures et 1 342 secondes"
-
-

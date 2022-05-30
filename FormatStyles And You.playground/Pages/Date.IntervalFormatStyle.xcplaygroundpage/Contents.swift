@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - Date.IntervalFormatStyle
 
-let range = Date(timeIntervalSince1970: 0)..<Date(timeIntervalSinceReferenceDate: 2837)
+let range = Date(timeIntervalSince1970: 0) ..< Date(timeIntervalSinceReferenceDate: 2837)
 
 range.formatted(.interval) // "12/31/69, 5:00 PM – 12/31/00, 5:47 PM"
 
@@ -21,7 +21,7 @@ let interval = Date.IntervalFormatStyle(
     timeZone: TimeZone(secondsFromGMT: 0)!
 )
 
-interval.format(range)    // "Jan 1, 1970, 12:00 AM – Jan 1, 2001, 12:47 AM"
+interval.format(range) // "Jan 1, 1970, 12:00 AM – Jan 1, 2001, 12:47 AM"
 range.formatted(interval) // "Jan 1, 1970, 12:00 AM – Jan 1, 2001, 12:47 AM"
 
 struct NarrowIntervalStyle: FormatStyle {
@@ -46,5 +46,3 @@ extension FormatStyle where Self == NarrowIntervalStyle {
 }
 
 range.formatted(.narrowInterval)
-
-

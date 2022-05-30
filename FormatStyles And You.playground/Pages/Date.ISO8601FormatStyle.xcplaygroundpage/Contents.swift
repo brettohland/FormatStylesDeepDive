@@ -34,7 +34,6 @@ let isoFormat = Date.ISO8601FormatStyle(
 isoFormat.format(twosday) // "2022-02-22T09:22:22.000Z"
 twosday.formatted(isoFormat)
 
-
 struct ISO8601Variant: FormatStyle {
     typealias FormatInput = Date
     typealias FormatOutput = String
@@ -58,4 +57,3 @@ extension FormatStyle where Self == ISO8601Variant {
 }
 
 twosday.formatted(.iso8601Variant) // "2022-02-22T09:22:22.000Z"
-
