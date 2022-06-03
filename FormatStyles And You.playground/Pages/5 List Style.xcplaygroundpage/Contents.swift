@@ -53,4 +53,4 @@ importantDates.formatted(.list(memberStyle: yearOnlyFormat, type: .or, width: .n
 importantDates.formatted(.list(memberStyle: yearOnlyFormat, type: .or, width: .short)) // "2000 or 1969"
 
 let yearStyle = ListFormatStyle<Date.FormatStyle, [Date]>.init(memberStyle: .dateTime.year())
-importantDates.formatted(yearStyle)
+importantDates.formatted(yearStyle) // "2000 and 1969"
