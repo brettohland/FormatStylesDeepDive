@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
     <pages>
-        <page name='MeasurementFormatStyle'/>
-        <page name='Custom FormatStyle'/>
-        <page name='Date.FormatStyle'/>
-        <page name='Date.RelativeFormatStyle'/>
-        <page name='The Basics'/>
-        <page name='SwiftUI'/>
-        <page name='Date.ComponentFormatStyle'/>
-        <page name='Date.IntervalFormatStyle'/>
-        <page name='Date.ISO8601FormatStyle'/>
-        <page name='Date.VerbatimFormatStyle'/>
-        <page name='Date.FormatStyle.dateTime'/>
-        <page name='ByteCountFormatStyle'/>
-        <page name='ListFormatStyle'/>
-        <page name='PersonNameComponents.FormatStyle'/>
-        <page name='Currency'/>
-        <page name='Number'/>
-        <page name='Percent'/>
-        <page name='Outputting AttributedStrings'/>
+        <page name='1. The Basics'/>
+        <page name='2.0 Number Style'/>
+        <page name='2.1 Percent Style'/>
+        <page name='2.2 Currency Style'/>
+        <page name='3.0 Date Style'/>
+        <page name='3.1 Date &amp; Time Style'/>
+        <page name='3.2 .dateTime Style'/>
+        <page name='3.3 iSO8601 Style'/>
+        <page name='3.4 Relative Date Style'/>
+        <page name='3.5 Verbatim Date Style'/>
+        <page name='3.6 Interval Date Range Style'/>
+        <page name='3.7 Components Date Range Style'/>
+        <page name='4 Measurement Style'/>
+        <page name='5 List Style'/>
+        <page name='6 Person Name Style'/>
+        <page name='7 Byte Count Style'/>
+        <page name='8 Custom'/>
+        <page name='9 SwiftUI'/>
+        <page name='10 Attributed String Output'/>
     </pages>
 </playground>

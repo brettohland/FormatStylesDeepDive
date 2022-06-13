@@ -128,3 +128,12 @@ Float(1_000).formatted(.percent.notation(.scientific).locale(Locale(identifier: 
 // MARK: - Attributed String Output
 
 Float(10).formatted(.percent.scale(200.0).notation(.compactName).grouping(.automatic).attributed)
+
+// MARK: - Initializing
+
+let frenchStyle = FloatingPointFormatStyle<Double>.Percent()
+    .notation(.compactName)
+    .locale(Locale(identifier: "fr_FR"))
+
+frenchStyle.format(0.1) // "10 %"
+0.1.formatted(frenchStyle) // "10 %"

@@ -32,28 +32,34 @@ let isoFormat = Date.ISO8601FormatStyle(
 )
 
 isoFormat.format(twosday) // "2022-02-22T09:22:22.000Z"
-twosday.formatted(isoFormat)
+twosday.formatted(isoFormat) // "2022-02-22T09:22:22.000Z"
 
-struct ISO8601Variant: FormatStyle {
-    typealias FormatInput = Date
-    typealias FormatOutput = String
+let isoStyle = Date.ISO8601FormatStyle(timeZone: TimeZone(secondsFromGMT: 0)!)
+    .year()
+    .day()
+    .month()
+    .dateSeparator(.dash)
+    .dateTimeSeparator(.standard)
+    .timeSeparator(.colon)
+    .timeZoneSeparator(.colon)
+    .time(includingFractionalSeconds: true)
+    .locale(Locale(identifier: "fr_FR"))
 
-    static let isoFormat = Date.ISO8601FormatStyle(
-        dateSeparator: .dash,
-        dateTimeSeparator: .standard,
-        timeSeparator: .colon,
-        timeZoneSeparator: .colon,
-        includingFractionalSeconds: true,
-        timeZone: TimeZone(secondsFromGMT: 0)!
-    )
+isoStyle.format(twosday) // "2022-02-22T09:22:22.000"
+twosday.formatted(isoStyle) // "2022-02-22T09:22:22.000"
 
-    func format(_ value: Date) -> String {
-        ISO8601Variant.isoFormat.format(value)
-    }
-}
+// MARK: - Parsing
 
-extension FormatStyle where Self == ISO8601Variant {
-    static var iso8601Variant: ISO8601Variant { .init() }
-}
+let parsingStyle = Date.ISO8601FormatStyle(timeZone: TimeZone(secondsFromGMT: 0)!)
+    .year()
+    .day()
+    .month()
+    .dateSeparator(.dash)
+    .dateTimeSeparator(.standard)
+    .timeSeparator(.colon)
+    .timeZoneSeparator(.colon)
+    .time(includingFractionalSeconds: true)
 
-twosday.formatted(.iso8601Variant) // "2022-02-22T09:22:22.000Z"
+try? parsingStyle.parseStrategy.parse("2022-02-22T09:22:22.000")
+try? parsingStyle.parse("2022-02-22T09:22:22.000")
+try? Date("2022-02-22T09:22:22.000", strategy: parsingStyle.parseStrategy)

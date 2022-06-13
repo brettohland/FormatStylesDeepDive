@@ -103,7 +103,11 @@ Decimal(10.111).formatted(.number.precision(.integerAndFractionLength(integer: 2
 // MARK: - Notation
 
 Float(1_000).formatted(.number.notation(.automatic)) // "1,000"
-Float(1_000).formatted(.number.notation(.compactName)) // "1K"
+
+1_000.formatted(.number.notation(.compactName)) // "1K"
+1_000_000_000.formatted(.number.notation(.compactName)) // 1B
+1_500_000.formatted(.number.notation(.compactName)) // 1.5M
+
 Float(1_000).formatted(.number.notation(.scientific)) // "1E3"
 
 // MARK: - Scale
@@ -129,3 +133,20 @@ Float(1_000).formatted(.number.grouping(.never).locale(Locale(identifier: "fr_FR
 // MARK: - Attributed String Output
 
 Float(10).formatted(.number.scale(200.0).notation(.compactName).grouping(.automatic).attributed)
+
+// MARK: - Initializing
+
+let frenchStyle = IntegerFormatStyle<Int>()
+    .notation(.compactName)
+    .locale(Locale(identifier: "fr_FR"))
+    .scale(20)
+
+frenchStyle.format(1_000) // "20 k"
+1_000.formatted(frenchStyle) // "20 k"
+
+// MARK: - Parsing Decimals
+
+let decimal = Decimal(1_000.01)
+
+try? Decimal.FormatStyle().parseStrategy.parse("-100.1002") // -100.1002
+try? Decimal("-100.1002", strategy: Decimal.FormatStyle().scale(2).parseStrategy) // -50.0501

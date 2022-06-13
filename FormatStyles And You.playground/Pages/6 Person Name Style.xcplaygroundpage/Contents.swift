@@ -23,7 +23,11 @@ guest.formatted(.name(style: .short).locale(chinaLocale)) // "Liza"
 guest.formatted(.name(style: .medium).locale(chinaLocale)) // "Smith Elizabeth"
 guest.formatted(.name(style: .long).locale(chinaLocale)) // "Dr Smith Elizabeth Jillian Esq."
 
-let inFrance = PersonNameComponents.FormatStyle(style: .long, locale: Locale(identifier: "fr_FR"))
+// Parsing
 
-inFrance.format(guest)
-guest.formatted(inFrance)
+let parsingStyle = PersonNameComponents.FormatStyle(style: .long)
+
+// namePrefix: Dr givenName: Elizabeth middleName: Jillian familyName: Smith nameSuffix: Esq.
+try? parsingStyle.parseStrategy.parse("Dr Elizabeth Jillian Smith Esq.")
+try? PersonNameComponents("Dr Elizabeth Jillian Smith Esq.", strategy: parsingStyle.parseStrategy)
+try? PersonNameComponents("Dr Elizabeth Jillian Smith Esq.")

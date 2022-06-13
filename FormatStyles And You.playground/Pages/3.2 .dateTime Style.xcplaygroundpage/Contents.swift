@@ -123,3 +123,16 @@ twosday.formatted(.dateTime.year().month().day().hour().minute().second().locale
 // MARK: - Attributed String Output
 
 twosday.formatted(.dateTime.hour().minute().attributed)
+
+// MARK: - Initializing
+
+let frenchStyle = Date.FormatStyle()
+    .year(.twoDigits)
+    .month(.twoDigits)
+    .weekday(.wide)
+    .day(.twoDigits)
+    .hour(.twoDigits(amPM: .wide))
+    .locale(Locale(identifier: "fr_FR"))
+
+twosday.formatted(frenchStyle) // "mardi 22/02/22 à 02 h"
+frenchStyle.format(twosday) // "mardi 22/02/22 à 02 h"

@@ -119,3 +119,20 @@ Decimal(10).formatted(.currency(code: "GBP").scale(200.0).sign(strategy: .always
 // MARK: - Attributed String
 
 Decimal(10).formatted(.currency(code: "GBP").scale(200.0).sign(strategy: .always()).presentation(.fullName).attributed)
+
+// MARK: - Initializing
+
+let frenchStyle = IntegerFormatStyle<Int>.Currency(code: "GBP")
+    .sign(strategy: .always())
+    .presentation(.fullName)
+    .locale(Locale(identifier: "fr_FR"))
+
+frenchStyle.format(1_000) // "+1 000,00 livres sterling"
+1_000.formatted(frenchStyle) // "+1 000,00 livres sterling"
+
+// MARK: - Parsing
+
+let parsingStyle = Decimal.FormatStyle.Currency(code: "GBP").presentation(.fullName)
+
+try? parsingStyle.parseStrategy.parse("10.00 British pounds") // 10
+try? Decimal("10.00 British pounds", strategy: parsingStyle.parseStrategy) // 10
