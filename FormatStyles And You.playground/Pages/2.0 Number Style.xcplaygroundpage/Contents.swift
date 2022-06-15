@@ -1,5 +1,11 @@
 import Foundation
 
+10.formatted(.number) // "10"
+
+FloatingPointFormatStyle<Double>().rounded(rule: .up, increment: 1).format(10.9) // "11"
+IntegerFormatStyle<Int>().notation(.compactName).format(1_000) // "1K"
+Decimal.FormatStyle().scale(10).format(1) // "10"
+
 // MARK: - Rounded
 
 Double(1.9999999).formatted(.number.rounded()) // "2"

@@ -1,5 +1,11 @@
 import Foundation
 
+10.formatted(.currency(code: "JPY")) // "10%"
+
+FloatingPointFormatStyle<Double>.Currency(code: "JPY").rounded(rule: .up, increment: 1).format(10.9) // ¥11"
+IntegerFormatStyle<Int>.Currency(code: "GBP").presentation(.fullName).format(42) // "42.00 British pounds"
+Decimal.FormatStyle.Currency(code: "USD").scale(12).format(0.1) // "$1.20"
+
 // MARK: - Rounded
 
 Decimal(0.59).formatted(.currency(code: "GBP").rounded()) // "£0.59"

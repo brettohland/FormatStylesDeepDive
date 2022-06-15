@@ -1,5 +1,11 @@
 import Foundation
 
+0.1.formatted(.percent) // "10%"
+
+FloatingPointFormatStyle<Double>.Percent().rounded(rule: .up, increment: 1).format(0.109) // "11%"
+IntegerFormatStyle<Int>.Percent().notation(.compactName).format(1_000) // "1K%"
+Decimal.FormatStyle.Percent().scale(12).format(0.1) // "1.2%"
+
 // MARK: - Rounded
 
 Double(1.9999999).formatted(.percent.rounded()) // "199.99999%"
@@ -137,3 +143,5 @@ let frenchStyle = FloatingPointFormatStyle<Double>.Percent()
 
 frenchStyle.format(0.1) // "10 %"
 0.1.formatted(frenchStyle) // "10 %"
+
+

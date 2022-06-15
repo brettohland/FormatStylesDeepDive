@@ -29,27 +29,3 @@ let relativeInFrench = Date.RelativeFormatStyle(
 thePast.formatted(relativeInFrench) // "Il y a deux semaines"
 relativeInFrench.format(thePast) // "Il y a deux semaines"
 
-// MARK: - Extending FormatStyle
-
-struct InFrench: FormatStyle {
-    typealias FormatInput = Date
-    typealias FormatOutput = String
-
-    static let relativeInFrench = Date.RelativeFormatStyle(
-        presentation: .named,
-        unitsStyle: .spellOut,
-        locale: Locale(identifier: "fr_FR"),
-        calendar: Calendar(identifier: .gregorian),
-        capitalizationContext: .beginningOfSentence
-    )
-
-    func format(_ value: Date) -> String {
-        InFrench.relativeInFrench.format(value)
-    }
-}
-
-extension FormatStyle where Self == InFrench {
-    static var inFrench: InFrench { .init() }
-}
-
-thePast.formatted(.inFrench) // "Il y a deux semaines"
