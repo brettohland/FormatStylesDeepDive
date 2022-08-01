@@ -19,9 +19,8 @@ terabyte.formatted(.byteCount(style: .memory, allowedUnits: .kb)) // "1,000,000,
 terabyte.formatted(.byteCount(style: .memory, allowedUnits: .mb)) // "1,000,000 MB"
 
 // .gb, .tb, .pb, .eb, .zb, and .ybOrHigher cause a FatalError (Feedback FB10031442)
-// FIXED IN iOS 16
+// FIXED IN iOS 16. See other iOS 16 files for examples.
 // terabyte.formatted(.byteCount(style: .file, allowedUnits: .gb))
-// Use the MeasurementFormatStyle instead (UnitInformationStorage)
 
 Int64(0).formatted(.byteCount(style: .file, allowedUnits: .mb, spellsOutZero: true)) // "Zero bytes"
 Int64(0).formatted(.byteCount(style: .file, allowedUnits: .mb, spellsOutZero: false)) // "0 MB"
