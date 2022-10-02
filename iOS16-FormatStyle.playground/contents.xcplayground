@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
     <pages>
-        <page name='URL Style'/>
-        <page name='Byte Count Style Updates'/>
-        <page name='Duration Style'/>
-        <page name='Verbatim Date Style Update.xcplaygroundpage'/>
+        <page name='3.4.1 Verbatim iOS 16 Updates'/>
+        <page name='7.1 Byte Count Style iOS 16 Updates'/>
+        <page name='12 Duration Style'/>
+        <page name='13 URL Style'/>
+        <page name='Numerical Styles iOS 16 Updates'/>
     </pages>
 </playground>
