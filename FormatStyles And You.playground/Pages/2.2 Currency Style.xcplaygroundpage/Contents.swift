@@ -105,6 +105,7 @@ Decimal(10).formatted(.currency(code: "GBP").scale(10)) // "£100.00"
 // MARK: - Locale
 
 Decimal(10).formatted(.currency(code: "GBP").presentation(.fullName).locale(Locale(identifier: "fr_FR"))) // "10,00 livres sterling"
+Decimal(10000000).formatted(.currency(code: "GBP").locale(Locale(identifier: "hi_IN"))) // "£1,00,00,000.00
 
 // MARK: - Sign
 

@@ -6,7 +6,7 @@ let twosdayDateComponents = DateComponents(
     year: 2022,
     month: 2,
     day: 22,
-    hour: 2,
+    hour: 22,
     minute: 22,
     second: 22,
     nanosecond: 22
@@ -14,12 +14,21 @@ let twosdayDateComponents = DateComponents(
 let twosday = Calendar(identifier: .gregorian).date(from: twosdayDateComponents)!
 
 let verbatim = Date.VerbatimFormatStyle(
-    format: "\(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .oneBased)):\(minute: .twoDigits)",
+    format: "Today is Twoesday \(month: .defaultDigits) \(day: .defaultDigits) \(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .oneBased)):\(minute: .twoDigits),
     timeZone: TimeZone.current,
     calendar: .current
 )
 
-verbatim.format(twosday) // "02:22"
+verbatim.format(twosday) // "Today is 02:22 otherwise known as "Twosday""
+
+twosday.formatted(
+    .verbatim(
+        "Today is \(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .oneBased)):\(minute: .twoDigits) otherwise known as \"Twosday\"",
+        locale: Locale(identifier: "zh_CN"),
+        timeZone: .current,
+        calendar: .current
+    )
+) // "Today is 02:22 otherwise known as "Twosday""
 
 twosday.formatted(verbatim.attributed)
 
@@ -151,20 +160,23 @@ Year For Week of Year
 
 let verbatimGroupOne = Date.VerbatimFormatStyle(
     format: groupOne,
-    timeZone: TimeZone.current,
-    calendar: .current
+    locale: Locale(identifier: "en_US"),
+    timeZone: TimeZone(abbreviation: "PDT")!,
+    calendar: Calendar(identifier: .gregorian)
 )
 
 let verbatimGroupTwo = Date.VerbatimFormatStyle(
     format: groupTwo,
-    timeZone: TimeZone.current,
-    calendar: .current
+    locale: Locale(identifier: "en_US"),
+    timeZone: TimeZone(abbreviation: "PDT")!,
+    calendar: Calendar(identifier: .gregorian)
 )
 
 let verbatimGroupThree = Date.VerbatimFormatStyle(
     format: groupThree,
-    timeZone: TimeZone.current,
-    calendar: .current
+    locale: Locale(identifier: "en_US"),
+    timeZone: TimeZone(abbreviation: "PDT")!,
+    calendar: Calendar(identifier: .gregorian)
 )
 
 print(verbatimGroupOne.format(twosday))
@@ -191,76 +203,76 @@ print(verbatimGroupThree.format(twosday))
  .twoDigits: 53
 
  Day Period
- .conversational(.abbreviated)): AM
- .conversational(.narrow)): AM
- .conversational(.wide)): AM
+ .conversational(.abbreviated)): at night
+ .conversational(.narrow)): at night
+ .conversational(.wide)): at night
  .standard(.abbreviated)): AM
- .standard(.narrow)): AM
+ .standard(.narrow)): a
  .standard(.wide)): AM
  .with12s(.abbreviated)): AM
- .with12s(.narrow)): AM
+ .with12s(.narrow)): a
  .with12s(.wide)): AM
 
  Era
- .abbreviated: CE
- .narrow: CE
- .wide: CE
+ .abbreviated: AD
+ .narrow: A
+ .wide: Anno Domini
 
  Hour
- .defaultDigits(clock: .twelveHour, hourCycle: .oneBased)): 2
- .defaultDigits(clock: .twelveHour, hourCycle: .zeroBased)): 2
- .defaultDigits(clock: .twentyFourHour, hourCycle: .oneBased)): 2
- .defaultDigits(clock: .twentyFourHour, hourCycle: .zeroBased)): 2
+ .defaultDigits(clock: .twelveHour, hourCycle: .oneBased)): 1
+ .defaultDigits(clock: .twelveHour, hourCycle: .zeroBased)): 1
+ .defaultDigits(clock: .twentyFourHour, hourCycle: .oneBased)): 1
+ .defaultDigits(clock: .twentyFourHour, hourCycle: .zeroBased)): 1
 
  Minute
  .defaultDigits: 22
  .twoDigits: 22
 
  Month
- .abbreviated: M02
+ .abbreviated: Feb
  .defaultDigits: 2
- .narrow: 2
+ .narrow: F
  .twoDigits: 02
- .wide: M02
+ .wide: February
  Second
  .defaultDigits: 22
  .twoDigits: 22
 
  Second Fraction
  .fractional(10)): 000000000
- .milliseconds(10)): 008542000
+ .milliseconds(10)): 004942000
 
  Standalone Month
- .abbreviated: M02
+ .abbreviated: Feb
  .defaultDigits: 2
- .narrow: 2
+ .narrow: F
  .twoDigits: 02
- .wide: M02
+ .wide: February
  Standalone Quarter
  .abbreviated: Q1
  .narrow: 1
  .oneDigit: 1
  .twoDigits: 01
- .wide: Q1
+ .wide: 1st quarter
 
  Standalone Weekday
  .abbreviated: Tue
  .narrow: T
  .oneDigit: 3
- .short: Tue
- .wide: Tue
+ .short: Tu
+ .wide: Tuesday
 
  Time Zone
- .exemplarLocation: Edmonton
- .genericLocation: Edmonton
- .identifier(.long)): America/Edmonton
- .identifier(.short)): caedm
- .iso8601(.long)): -07:00
- .iso8601(.short)): -0700
- .localizedGMT(.long)): GMT-07:00
- .localizedGMT(.short)): GMT-7
- .specificName(.long)): GMT-07:00
- .specificName(.short)): GMT-7
+ .exemplarLocation: Los Angeles
+ .genericLocation: Los Angeles Time
+ .identifier(.long)): America/Los_Angeles
+ .identifier(.short)): uslax
+ .iso8601(.long)): -08:00
+ .iso8601(.short)): -0800
+ .localizedGMT(.long)): GMT-08:00
+ .localizedGMT(.short)): GMT-8
+ .specificName(.long)): Pacific Standard Time
+ .specificName(.short)): PST
 
  Week
  .defaultDigits: 9
@@ -271,9 +283,9 @@ print(verbatimGroupThree.format(twosday))
  .abbreviated: Tue
  .narrow: T
  .oneDigit: 3
- .short: Tue
+ .short: Tu
  .twoDigits: 03
- .wide: Tue
+ .wide: Tuesday
 
  Year
  .defaultDigits: 2022
