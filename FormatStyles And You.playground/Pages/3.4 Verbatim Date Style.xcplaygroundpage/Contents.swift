@@ -14,7 +14,7 @@ let twosdayDateComponents = DateComponents(
 let twosday = Calendar(identifier: .gregorian).date(from: twosdayDateComponents)!
 
 let verbatim = Date.VerbatimFormatStyle(
-    format: "Today is Twoesday \(month: .defaultDigits) \(day: .defaultDigits) \(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .oneBased)):\(minute: .twoDigits),
+    format: "Today is Twoesday \(month: .defaultDigits) \(day: .defaultDigits) \(hour: .twoDigits(clock: .twentyFourHour, hourCycle: .oneBased)):\(minute: .twoDigits)",
     timeZone: TimeZone.current,
     calendar: .current
 )
